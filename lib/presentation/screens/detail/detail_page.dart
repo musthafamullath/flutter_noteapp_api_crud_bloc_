@@ -1,20 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:mini_project_note_app_api_bloc/core/colors.dart';
+import 'package:mini_project_note_app_api_bloc/bloc/note_bloc.dart';
 import 'package:mini_project_note_app_api_bloc/core/constants.dart';
+import 'package:mini_project_note_app_api_bloc/data/models/note_model.dart';
+import 'package:mini_project_note_app_api_bloc/presentation/screens/add_note/cubit/checkbox_cubit.dart';
 import 'package:mini_project_note_app_api_bloc/presentation/screens/add_note/widgets/add_date_and_status_widget.dart';
 import 'package:mini_project_note_app_api_bloc/presentation/screens/add_note/widgets/add_textfield.dart';
 import 'package:mini_project_note_app_api_bloc/presentation/screens/detail/widgets/details_custom_appbar.dart';
 import 'package:mini_project_note_app_api_bloc/presentation/widgets/custom_btn.dart';
 
 class DetailPage extends StatefulWidget {
-  const DetailPage({super.key});
-
+  const DetailPage({
+    super.key,
+    required this.notes,
+    required this.noteBloc,
+  });
+  final NoteModel notes;
+  final NoteBloc noteBloc;
   @override
   State<DetailPage> createState() => _DetailPageState();
 }
 
 class _DetailPageState extends State<DetailPage> {
+  late CheckboxCubit checkboxCubit;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -40,7 +47,9 @@ class _DetailPageState extends State<DetailPage> {
                         onChanged: null,
                       ),
                       kHeight(20),
-                      const AddDateAndStateWidget(),
+                      AddDateAndStateWidget(
+                        checkboxCubit: checkboxCubit,
+                      ),
                       const AddCustomTextField(
                         controller: null,
                         hintText: 'write your notes here .>.>.>',

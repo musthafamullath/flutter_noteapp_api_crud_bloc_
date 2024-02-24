@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mini_project_note_app_api_bloc/core/constants.dart';
+import 'package:mini_project_note_app_api_bloc/presentation/screens/add_note/cubit/checkbox_cubit.dart';
 
 class AddDateAndStateWidget extends StatelessWidget {
   const AddDateAndStateWidget({
-    super.key, this.dateAndTime, this.isCompleted,
+    super.key,
+    this.dateAndTime,
+    this.isCompleted,
+    required this.checkboxCubit,
   });
+  final CheckboxCubit checkboxCubit;
   final String? dateAndTime;
   final bool? isCompleted;
   @override
@@ -26,8 +32,7 @@ class AddDateAndStateWidget extends StatelessWidget {
             ),
             const Spacer(),
             Text(
-             dateAndTime ?? '${DateTime.now()}',
-              
+              dateAndTime ?? '${DateTime.now()}',
               style: const TextStyle(fontSize: 13),
             ),
             kHeight(20),
@@ -42,15 +47,17 @@ class AddDateAndStateWidget extends StatelessWidget {
                   "Completed :",
                   style: TextStyle(fontSize: 13),
                 ),
-                
-                // const Spacer(),
-                // Transform.scale(
-                //   scale: 0.8,
-                //   child: Checkbox(
-                //     value: null,
-                //     onChanged: null,
-                //   ),
-                // )
+                const Spacer(),
+                BlocBuilder<CheckboxCubit, bool>(
+                  builder: (context, state) => Transform.scale(
+                    scale: 0.8,
+                    child: Checkbox(
+                      value: state,
+                      onChanged: (bool? value) =>
+                      checkboxCubit.isChecked(),
+                    ),
+                  ),
+                ),
               ],
             )
           ],

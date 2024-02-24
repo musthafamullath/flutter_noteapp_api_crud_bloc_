@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mini_project_note_app_api_bloc/core/colors.dart';
 import 'package:mini_project_note_app_api_bloc/core/constants.dart';
+import 'package:mini_project_note_app_api_bloc/data/models/note_model.dart';
 
 class HomeCardWidget extends StatelessWidget {
   const HomeCardWidget({
     super.key,
+    required this.notes,
   });
+  final NoteModel notes;
 
   @override
   Widget build(BuildContext context) {
@@ -46,8 +49,7 @@ class HomeCardWidget extends StatelessWidget {
               children: <Widget>[
                 Text(
                   "FormatTimeAndDate",
-                  style: GoogleFonts.k2d(
-                      fontSize: 10, color: kTextLightGrey),
+                  style: GoogleFonts.k2d(fontSize: 10, color: kTextLightGrey),
                 ),
                 const Align(
                   alignment: Alignment.centerRight,
