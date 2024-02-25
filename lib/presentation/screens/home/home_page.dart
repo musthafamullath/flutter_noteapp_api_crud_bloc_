@@ -14,7 +14,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final noteBloc = context.read<NoteBloc>();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((_)async {
       context.read<NoteBloc>().add(NoteInitialFetchEvent());
     });
     return SafeArea(
@@ -88,7 +88,9 @@ class HomePage extends StatelessWidget {
             onPressed: () {
               nextScreen(
                 context,
-                 AddNotePage(noteBloc: noteBloc,),
+                AddNotePage(
+                  noteBloc: noteBloc,
+                ),
               );
             },
             backgroundColor: kBlue.withOpacity(0.5).withRed(9999),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 import 'package:mini_project_note_app_api_bloc/core/colors.dart';
 import 'package:mini_project_note_app_api_bloc/core/constants.dart';
 import 'package:mini_project_note_app_api_bloc/data/models/note_model.dart';
@@ -13,8 +14,12 @@ class HomeCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    DateTime inputDateTime = DateTime.parse(notes.createAt!);
+    String formattedDateTime =
+        DateFormat('hh:mm a | dd MMM').format(inputDateTime);
     return Container(
-      margin: const EdgeInsets.all(10),
+      margin: const EdgeInsets.all(15),
+      padding: const EdgeInsets.all(15),
       decoration: BoxDecoration(
         color: kShadedWhite,
         borderRadius: BorderRadius.circular(50),
@@ -25,7 +30,7 @@ class HomeCardWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Text(
-              "noteTitle",
+              notes.title,
               maxLines: 3,
               overflow: TextOverflow.ellipsis,
               style: GoogleFonts.k2d(
@@ -34,32 +39,37 @@ class HomeCardWidget extends StatelessWidget {
               ),
             ),
             kHeight(14),
-            const Text(
-              "NoteDescription",
+            Text(
+              notes.description,
               maxLines: 3,
               overflow: TextOverflow.ellipsis,
-              style: TextStyle(
-                  fontSize: 10,
-                  color: kTextLightGrey,
-                  fontWeight: FontWeight.w600),
+              style: const TextStyle(
+                fontSize: 10,
+                color: kTextLightGrey,
+                fontWeight: FontWeight.w600,
+              ),
             ),
             const Spacer(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text(
-                  "FormatTimeAndDate",
-                  style: GoogleFonts.k2d(fontSize: 10, color: kTextLightGrey),
+                  formattedDateTime,
+                  style: GoogleFonts.k2d(
+                    fontSize: 10,
+                    color: kTextLightGrey,
+                  ),
                 ),
-                const Align(
+                Align(
                   alignment: Alignment.centerRight,
                   child: CircleAvatar(
                     radius: 8,
-                    backgroundColor: kGreen,
+                    backgroundColor:
+                        notes.isCompleted ? Colors.purpleAccent : Colors.green,
                   ),
-                )
+                ),
               ],
-            )
+            ),
           ],
         ),
       ),

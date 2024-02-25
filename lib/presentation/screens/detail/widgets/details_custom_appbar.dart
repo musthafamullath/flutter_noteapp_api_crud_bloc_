@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mini_project_note_app_api_bloc/bloc/note_bloc.dart';
 import 'package:mini_project_note_app_api_bloc/core/colors.dart';
 
 class DetailsCustomAppbar extends StatelessWidget {
   const DetailsCustomAppbar({
     super.key,
+    required this.noteBloc,
+    required this.noteId,
   });
+  final NoteBloc noteBloc;
+  final String noteId;
 
   @override
   Widget build(BuildContext context) {
@@ -46,12 +52,15 @@ class DetailsCustomAppbar extends StatelessWidget {
                   itemBuilder: (context) => [
                     PopupMenuItem(
                       height: 8,
-                      onTap: () {},
+                      onTap: () {
+                        noteBloc.add(NoteDeleteEvent(noteId: noteId,),);
+                        context.read<NoteBloc>().add(NoteInitialFetchEvent(),);
+                        Navigator.pop(context);
+                      },
                       child: Text(
                         "Delete",
                         style: GoogleFonts.k2d(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w500),
+                            color: Colors.white, fontWeight: FontWeight.w500),
                       ),
                     ),
                   ],

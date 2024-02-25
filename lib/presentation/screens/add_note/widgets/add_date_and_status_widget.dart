@@ -35,33 +35,32 @@ class AddDateAndStateWidget extends StatelessWidget {
               dateAndTime ?? '${DateTime.now()}',
               style: const TextStyle(fontSize: 13),
             ),
-            kHeight(20),
-            Row(
-              children: <Widget>[
-                const Icon(
-                  Icons.auto_mode_outlined,
-                  size: 18,
-                ),
-                kWidth(5),
-                const Text(
-                  "Completed :",
-                  style: TextStyle(fontSize: 13),
-                ),
-                const Spacer(),
-                BlocBuilder<CheckboxCubit, bool>(
-                  builder: (context, state) => Transform.scale(
-                    scale: 0.8,
-                    child: Checkbox(
-                      value: state,
-                      onChanged: (bool? value) =>
-                      checkboxCubit.isChecked(),
-                    ),
-                  ),
-                ),
-              ],
-            )
           ],
-        )
+        ),
+        kHeight(20),
+        Row(
+          children: <Widget>[
+            const Icon(
+              Icons.auto_mode_outlined,
+              size: 18,
+            ),
+            kWidth(5),
+            const Text(
+              "Completed :",
+              style: TextStyle(fontSize: 13),
+            ),
+            const Spacer(),
+            BlocBuilder<CheckboxCubit, bool>(
+              builder: (context, state) => Transform.scale(
+                scale: 0.8,
+                child: Checkbox(
+                  value: state,
+                  onChanged: (bool? value) => checkboxCubit.isChecked(),
+                ),
+              ),
+            ),
+          ],
+        ),
       ],
     );
   }

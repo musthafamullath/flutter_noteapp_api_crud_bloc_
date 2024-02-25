@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mini_project_note_app_api_bloc/bloc/note_bloc.dart';
 import 'package:mini_project_note_app_api_bloc/core/themes/light_theme.dart';
 import 'package:mini_project_note_app_api_bloc/presentation/screens/add_note/cubit/checkbox_cubit.dart';
+import 'package:mini_project_note_app_api_bloc/presentation/screens/detail/cubit/button_cubit.dart';
 import 'package:mini_project_note_app_api_bloc/presentation/screens/home/home_page.dart';
 
 void main() {
@@ -17,6 +18,9 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => CheckboxCubit(),
+        ),
+        BlocProvider(
+          create: (context) => ButtonCubit(),
         ),
         BlocProvider(
           create: (context) => NoteBloc(),

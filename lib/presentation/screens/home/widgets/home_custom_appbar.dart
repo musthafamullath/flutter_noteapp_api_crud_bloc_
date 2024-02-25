@@ -1,6 +1,7 @@
-
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mini_project_note_app_api_bloc/bloc/note_bloc.dart';
 
 import '../../../../core/colors.dart';
 
@@ -30,13 +31,22 @@ class CustomAppbar extends StatelessWidget {
                   ),
                 ),
                 InkWell(
-                  onTap: (){},
+                  onTap: () {
+                    context.read<NoteBloc>().add(
+                          NoteInitialFetchEvent(),
+                        );
+                  },
                   child: Column(
                     children: [
-                     const CircleAvatar(
-                          backgroundColor: kGreen,
-                          child:  Icon(Icons.refresh_rounded)),
-                      Text("Refresh",style: GoogleFonts.k2d(fontSize: 10,fontWeight: FontWeight.bold),)
+                      const CircleAvatar(
+                        backgroundColor: kGreen,
+                        child: Icon(Icons.refresh_rounded),
+                      ),
+                      Text(
+                        "Refresh",
+                        style: GoogleFonts.k2d(
+                            fontSize: 10, fontWeight: FontWeight.bold),
+                      ),
                     ],
                   ),
                 ),
