@@ -65,7 +65,7 @@ class HomeCardWidget extends StatelessWidget {
                   child: CircleAvatar(
                     radius: 8,
                     backgroundColor:
-                        notes.isCompleted ? Colors.purpleAccent : Colors.green,
+                        notes.isCompleted ? Colors.orangeAccent : Colors.greenAccent,
                   ),
                 ),
               ],

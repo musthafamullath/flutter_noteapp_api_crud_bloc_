@@ -8,8 +8,12 @@ class AddCustomTextField extends StatelessWidget {
     required this.fontWeight,
     this.onChanged,
     this.controller,
+    required this.maxLines,
+    required this.maxLength,
   });
   final String hintText;
+  final int maxLines;
+  final int  maxLength;
   final double fontSize;
   final FontWeight fontWeight;
   final void Function(String)? onChanged;
@@ -17,36 +21,47 @@ class AddCustomTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      controller: controller,
-      maxLines: null,
-      style: TextStyle(
-        fontSize: fontSize,
-        fontWeight:fontWeight,
-      ),
-      decoration: InputDecoration(
-        errorMaxLines: 1,
-        errorText: '',
-        errorStyle: const TextStyle(
-          height: 0,
-          fontSize: 0,
-          color: Colors.transparent,
-        ),
-        hintText: hintText,
-        hintStyle: TextStyle(
+    return SingleChildScrollView(
+      child: TextFormField(
+        
+        maxLines: maxLines,
+        maxLength: maxLength,
+        controller: controller,
+        style: TextStyle(
           fontSize: fontSize,
           fontWeight: fontWeight,
+          
         ),
-        border: InputBorder.none,
+        
+        decoration: InputDecoration(
+          
+          errorMaxLines: 1,
+          errorText: '',
+          errorStyle: const TextStyle(
+            height: 0,
+            fontSize: 0,
+            color: Colors.green,
+          ),
+          hintText: hintText,
+          hintStyle: TextStyle(
+            fontSize: fontSize,
+            fontWeight: fontWeight,
+          ),
+          border: const OutlineInputBorder(
+            borderSide: BorderSide(
+        width: 5
       ),
-      onChanged: onChanged,
-      validator: (value) {
-        if (value!.isEmpty) {
-          return '';
-        } else {
-          return null;
-        }
-      },
+          ),
+        ),
+        onChanged: onChanged,
+        validator: (value) {
+          if (value!.isEmpty) {
+            return '';
+          } else {
+            return null;
+          }
+        },
+      ),
     );
   }
 }

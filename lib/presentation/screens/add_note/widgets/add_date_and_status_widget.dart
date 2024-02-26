@@ -52,7 +52,8 @@ class AddDateAndStateWidget extends StatelessWidget {
             const Spacer(),
             BlocBuilder<CheckboxCubit, bool>(
               builder: (context, state) => Transform.scale(
-                scale: 0.8,
+                scale: 1,
+                origin: Offset.zero,
                 child: Checkbox(
                   value: state,
                   onChanged: (bool? value) => checkboxCubit.isChecked(),
