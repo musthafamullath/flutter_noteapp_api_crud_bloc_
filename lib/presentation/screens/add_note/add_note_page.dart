@@ -10,7 +10,7 @@ import 'package:mini_project_note_app_api_bloc/presentation/screens/add_note/cub
 import 'package:mini_project_note_app_api_bloc/presentation/screens/add_note/widgets/add_custom_appbar.dart';
 import 'package:mini_project_note_app_api_bloc/presentation/screens/add_note/widgets/add_date_and_status_widget.dart';
 import 'package:mini_project_note_app_api_bloc/presentation/screens/add_note/widgets/add_textfield.dart';
-import 'package:mini_project_note_app_api_bloc/presentation/widgets/custom_btn.dart';
+
 
 class AddNotePage extends StatefulWidget {
   const AddNotePage({
@@ -76,8 +76,8 @@ class _AddNotePageState extends State<AddNotePage> {
                           maxLength: 200,
                           controller: descriptionController,
                           hintText: 'write your notes here....',
-                          fontSize: 13,
-                          fontWeight: FontWeight.w400,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
                         ),
                       ],
                     ),

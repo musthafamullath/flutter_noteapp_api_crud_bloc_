@@ -31,41 +31,47 @@ class HomeCardWidget extends StatelessWidget {
           children: <Widget>[
             Text(
               notes.title,
-              maxLines: 3,
+              // maxLines: 3,
               overflow: TextOverflow.ellipsis,
               style: GoogleFonts.k2d(
-                fontSize: 14,
-                fontWeight: FontWeight.w700,
+                fontSize:25,
+                fontWeight: FontWeight.bold,
               ),
             ),
+            const Divider(),
             kHeight(14),
             Text(
               notes.description,
               maxLines: 3,
               overflow: TextOverflow.ellipsis,
               style: const TextStyle(
-                fontSize: 10,
-                color: kTextLightGrey,
-                fontWeight: FontWeight.w600,
+                fontSize: 16,
+                color: Colors.black,
+                fontWeight: FontWeight.w400,
               ),
             ),
             const Spacer(),
+           const Divider(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text(
                   formattedDateTime,
                   style: GoogleFonts.k2d(
-                    fontSize: 10,
-                    color: kTextLightGrey,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
                   ),
                 ),
+                const SizedBox(width: 15,height: 30,child: VerticalDivider(
+                  thickness: 3,color: Colors.grey,
+                )),
                 Align(
                   alignment: Alignment.centerRight,
                   child: CircleAvatar(
-                    radius: 8,
+                    radius: 10,
                     backgroundColor:
-                        notes.isCompleted ? Colors.orangeAccent : Colors.greenAccent,
+                        notes.isCompleted ? Colors.greenAccent : Colors.orangeAccent,
                   ),
                 ),
               ],

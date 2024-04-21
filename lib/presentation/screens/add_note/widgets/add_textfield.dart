@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mini_project_note_app_api_bloc/core/colors.dart';
 
 class AddCustomTextField extends StatelessWidget {
   const AddCustomTextField({
@@ -22,45 +23,50 @@ class AddCustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: TextFormField(
+      child: Container(
+        margin: const EdgeInsets.only(top: 10),
+        padding:const EdgeInsets.all(20),
         
-        maxLines: maxLines,
-        maxLength: maxLength,
-        controller: controller,
-        style: TextStyle(
-          fontSize: fontSize,
-          fontWeight: fontWeight,
-          
+        decoration: BoxDecoration(
+          color: kBlue.withOpacity(0.075),
+          borderRadius: BorderRadius.circular(25)
         ),
-        
-        decoration: InputDecoration(
+        child: TextFormField(
           
-          errorMaxLines: 1,
-          errorText: '',
-          errorStyle: const TextStyle(
-            height: 0,
-            fontSize: 0,
-            color: Colors.green,
-          ),
-          hintText: hintText,
-          hintStyle: TextStyle(
+          maxLines: maxLines,
+          maxLength: maxLength,
+          controller: controller,
+          style: TextStyle(
             fontSize: fontSize,
             fontWeight: fontWeight,
+            
           ),
-          border: const OutlineInputBorder(
-            borderSide: BorderSide(
-        width: 5
-      ),
+          
+          decoration: InputDecoration(
+            
+            errorMaxLines: 10,
+            errorText: '',
+            errorStyle: const TextStyle(
+              height: 0,
+              fontSize: 0,
+              color: Colors.green,
+            ),
+            hintText: hintText,
+            hintStyle: TextStyle(
+              fontSize: fontSize,
+              fontWeight: fontWeight,
+            ),
+            border: InputBorder.none,
           ),
+          onChanged: onChanged,
+          validator: (value) {
+            if (value!.isEmpty) {
+              return '';
+            } else {
+              return null;
+            }
+          },
         ),
-        onChanged: onChanged,
-        validator: (value) {
-          if (value!.isEmpty) {
-            return '';
-          } else {
-            return null;
-          }
-        },
       ),
     );
   }

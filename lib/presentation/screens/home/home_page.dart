@@ -93,7 +93,7 @@ class HomePage extends StatelessWidget {
                 ),
               );
             },
-            backgroundColor: kBlue.withOpacity(0.5).withRed(9999),
+            backgroundColor: kBlue.withOpacity(0.5),
             shape: const CircleBorder(),
             elevation: 0,
             child: const Icon(

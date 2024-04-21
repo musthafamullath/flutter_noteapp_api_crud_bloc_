@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mini_project_note_app_api_bloc/core/colors.dart';
 import 'package:mini_project_note_app_api_bloc/core/constants.dart';
 
 class AddCustomAppbar extends StatelessWidget {
@@ -14,20 +15,23 @@ class AddCustomAppbar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-         const Spacer(),
+         kWidth(20),
           Text(
             'Add New Note',
             style: GoogleFonts.k2d(
-              fontSize: 16,
-              fontWeight: FontWeight.w500,
+              fontSize: 25,
+              fontWeight: FontWeight.bold,
             ),
           ),
-          kWidth(10),
+        const Spacer(),
           InkWell(
             onTap: () {
               Navigator.pop(context);
             },
-            child: const Icon(Icons.close),
+            child: CircleAvatar(
+              radius: 32,
+              backgroundColor: kGreen.withOpacity(0.7),
+              child: const Icon(Icons.close,size: 32,)),
           ),
         ],
       ),
